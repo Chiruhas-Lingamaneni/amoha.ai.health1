@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body_block %}
+        {% if registered %}
+            <form method="POST">
+                {% csrf_token %}
+                {{userform.as_p}}
+                {{userinfoform.as_p}}
+                <input type="submit" class="btn btn-primary" value="submit">
+            </form>
+        {% else %}
+            <h3>You have been signed in</h3>
+            <h4><a href="{% url 'home:login' %}">Login in</a></h4>
+        {% endif %}
+{% endblock %}
